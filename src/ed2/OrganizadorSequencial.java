@@ -162,7 +162,6 @@ public class OrganizadorSequencial implements IFileOrganizer {
     public void percorrer() {
         try {
             long size = this.canal.size();
-            ConversorAluno cA = new ConversorAluno();
             for (long pos = 0; pos < size; pos += TamanhoAluno.TOTAL) {
                 ByteBuffer buf = ByteBuffer.allocate(TamanhoAluno.TOTAL);
                 this.canal.read(buf, pos);

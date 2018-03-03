@@ -11,7 +11,7 @@ package ed2;
  */
 public class TesteOrganizador {
     public static void main(String[] args) throws Exception {
-        OrganizadorSequencial org = new OrganizadorSequencial("C:\\Users\\j_kel\\Desktop\\teste2.db");
+        OrganizadorBrent org = new OrganizadorBrent("C:\\Users\\j_kel\\Desktop\\testeBrent.db");
         
         Aluno a = new Aluno(29, "Bruna", "Salgado", "(79)99862-0665", (short) 171, "brunna.com");
         Aluno j = new Aluno(13, "Geovanne", "São Cristóvão", "(79)99952-7255", (short) 171, "geovanne.com");
@@ -21,11 +21,10 @@ public class TesteOrganizador {
         Aluno e = new Aluno(11, "Mayara", "Aracaju", "(79)99903-5653", (short) 171, "mayara.com");
         Aluno f = new Aluno(5, "Pedro", "Aracaju", "(79)99975-0982", (short) 171, "pedro.com");
         Aluno g = new Aluno(31, "Raul", "São Cristóvão", "(79)99999-9999", (short) 171, "raul.com");
-        Aluno h = new Aluno(2, "Roberto", "Aracaju", "(79)99125-9236", (short) 171, "roberto.com");
-        Aluno i = new Aluno(19, "Tulio", "Aracaju", "(79)99105-2774", (short) 171, "tulio.com");
-        Aluno k = new Aluno(7, "Wilkinson", "Lagarto", "(79)99910-6088", (short) 171, "wilkinson.com");
-        Aluno l = new Aluno(37, "Wilkinson2", "Lagarto2", "(79)99910-60882", (short) 171, "wilkinson2.com");
-        org.esvaziar();
+        //Aluno h = new Aluno(2, "Roberto", "Aracaju", "(79)99125-9236", (short) 171, "roberto.com");
+        //Aluno i = new Aluno(19, "Tulio", "Aracaju", "(79)99105-2774", (short) 171, "tulio.com");
+        //Aluno k = new Aluno(7, "Wilkinson", "Lagarto", "(79)99910-6088", (short) 171, "wilkinson.com");
+        //Aluno l = new Aluno(37, "Wilkinson2", "Lagarto2", "(79)99910-60882", (short) 171, "wilkinson2.com");
         org.addAluno(a);
         org.addAluno(b);
         System.out.println("------------------ PERCORRER ------------------");
@@ -43,7 +42,7 @@ public class TesteOrganizador {
         System.out.println("------------------ PERCORRER ------------------");
         org.percorrer();
         org.addAluno(g);
-        System.out.println("------------------ PERCORRER ------------------");
+        /**System.out.println("------------------ PERCORRER ------------------");
         org.percorrer();
         org.addAluno(h);
         System.out.println("------------------ PERCORRER ------------------");
@@ -56,13 +55,13 @@ public class TesteOrganizador {
         org.percorrer();
         org.addAluno(k);
         org.addAluno(l);
-        System.out.println("------------------ PERCORRER ------------------");
+        */System.out.println("------------------ PERCORRER ------------------");
         org.percorrer();
 
         //org.delAluno(23);
         //org.delAluno(7);
         //org.delAluno(2);
-        
+        /**
         System.out.println("------------------ PERCORRER ------------------");
         org.percorrer();
         long tempoInicio = System.currentTimeMillis();
@@ -151,6 +150,6 @@ public class TesteOrganizador {
         a1.imprimiAluno();
         a1 = org.getAluno(37);
         a1.imprimiAluno();
-        System.out.println("Tempo Total: "+(System.currentTimeMillis()-tempoInicio));
+        System.out.println("Tempo Total: "+(System.currentTimeMillis()-tempoInicio));**/
     }
 }
