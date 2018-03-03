@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cadastro;
+package ed2;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -21,21 +21,21 @@ public class MigracaoBrent {
     public static void main(String[] args) {
         File fOrigem = new File("enem_aleat.db");
         try {
-            RandomAccessFile fileOrigem = new RandomAccessFile(fOrigem, "rw");
-            FileChannel channelOrigem = fileOrigem.getChannel();
-            IFileOrganizer org = new OrganizadorBrent("enem_brent.db");// referencia o arquivo organizado pelo método implementado
-            // Ler cada aluno do arquivo de origem e inserir no de destino
-            
-            for (int i = 0; i < 7603290; i++) {
-                // Ler da origem
-                ByteBuffer buf = ByteBuffer.allocate(TamanhoAluno.TOTAL);
-                channelOrigem.read(buf, i*TamanhoAluno.TOTAL);
-                buf.flip();
-                Aluno a = ConversorAluno.toAluno(buf);
-                // Inserir no destino
-                org.addAluno(a);
+            RandomAccessFile fileO = new RandomAccessFile(fOrigem, "rw");
+            try (FileChannel canalO = fileO.getChannel()) {
+                // referencia o arquivo organizado pelo método implementado
+                IFileOrganizer org = new OrganizadorBrent("enem_brent.db");
+                // Ler cada aluno do arquivo de origem e inserir no de destino
+                for (int i = 0; i < 7603290; i++) {
+                    // Ler da origem
+                    ByteBuffer buf = ByteBuffer.allocate(TamanhoAluno.TOTAL);
+                    canalO.read(buf, i*TamanhoAluno.TOTAL);
+                    buf.flip();
+                    Aluno a = ConversorAluno.toAluno(buf);
+                    // Inserir no destino
+                    org.addAluno(a);
+                }
             }
-            channelOrigem.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MigracaoBrent.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

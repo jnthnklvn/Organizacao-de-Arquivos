@@ -1,4 +1,4 @@
-package cadastro;
+package ed2;
 
 /**
  *

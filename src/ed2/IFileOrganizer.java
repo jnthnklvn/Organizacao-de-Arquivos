@@ -1,4 +1,4 @@
-package cadastro;
+package ed2;
 
 /**
  * Interface que define as operações de organizadores de arquivos de alunos em

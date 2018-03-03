@@ -1,4 +1,4 @@
-package cadastro;
+package ed2;
 
 import java.io.File;
 import java.io.FileNotFoundException;

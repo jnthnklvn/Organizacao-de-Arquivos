@@ -1,4 +1,4 @@
-package cadastro;
+package ed2;
 /**
  *
  * @author zkelvinfps
@@ -19,7 +19,8 @@ public class Aluno {
     }
     
     public void imprimiAluno(){
-        System.out.println(matricula+", "+nome+", "+endereco+", "+telefone+", "+curso+", "+email);
+        System.out.println(matricula+", "+nome+", "+endereco
+                +", "+telefone+", "+curso+", "+email);
     }
     
     public long getMatricula() {
