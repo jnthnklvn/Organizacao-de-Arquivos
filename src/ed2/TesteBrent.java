@@ -20,6 +20,10 @@ public class TesteBrent {
         Aluno e = new Aluno(0, "", "", "", (short) 0, "");
         Aluno f = new Aluno(0, "", "", "", (short) 0, "");
         Aluno g = new Aluno(0, "", "", "", (short) 0, "");
+        Aluno h = new Aluno(0, "", "", "", (short) 0, "");
+        Aluno i = new Aluno(0, "", "", "", (short) 0, "");
+        Aluno j = new Aluno(0, "", "", "", (short) 0, "");
+        Aluno k = new Aluno(0, "", "", "", (short) 0, "");
         org.esvaziar();
         org.addAluno(a);
         org.addAluno(b);
@@ -28,6 +32,10 @@ public class TesteBrent {
         org.addAluno(e);
         org.addAluno(f);
         org.addAluno(g);
+        org.addAluno(h);
+        org.addAluno(i);
+        org.addAluno(j);
+        org.addAluno(k);
         org.percorrer();
     }
 }

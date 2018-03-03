@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class OrganizadorBrent implements IFileOrganizer {
 
     FileChannel canal;
-    final long LENT = 7;
+    final long LENT = 11;
     long posAux;
     
     public OrganizadorBrent(String fileName) {
@@ -41,10 +41,8 @@ public class OrganizadorBrent implements IFileOrganizer {
             this.canal.read(bufA1, pos * TamanhoAluno.TOTAL);
             long size = (this.canal.size() / TamanhoAluno.TOTAL);
             bufA1.flip();
-            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             long matric = bufA1.getLong();
             bufA1.flip();
-            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             System.out.println(matric+", "+pos+", "+inc);
             while (matric > 0) {
                 pos += inc;
@@ -101,10 +99,8 @@ public class OrganizadorBrent implements IFileOrganizer {
                     custo1++;
                 }
                 if (custo1 <= custo2) {
-                    System.out.println("heeeerrrreee");
                     this.canal.write(bufA, pos * TamanhoAluno.TOTAL);
                 } else {
-                    System.out.println("rrrririiiiii");
                     this.canal.write(buf, posAux * TamanhoAluno.TOTAL);
                     this.canal.write(bufA, pos1 * TamanhoAluno.TOTAL);
                 }
@@ -116,15 +112,16 @@ public class OrganizadorBrent implements IFileOrganizer {
 
     @Override
     public Aluno getAluno(long matricA) {
-        long pos = matricA % LENT;
+        long pos = matricA % LENT, posA = pos;
         long inc = (matricA % (LENT - 2)) + 1;
         ByteBuffer buf = ByteBuffer.allocate(TamanhoAluno.MATRICULA);
         try {
             this.canal.read(buf, pos * TamanhoAluno.TOTAL);
             buf.flip();
             long matric = buf.getLong();
-            long size = (this.canal.size() / TamanhoAluno.TOTAL);
-            while (matric != matricA && matric > 0) {
+                buf.flip();
+            long size = this.canal.size() / TamanhoAluno.TOTAL;
+            while (matric != 0 && matric!=matricA) {
                 pos += inc;
                 if (pos >= size) {
                     pos -= size;
@@ -132,6 +129,8 @@ public class OrganizadorBrent implements IFileOrganizer {
                 this.canal.read(buf, pos * TamanhoAluno.TOTAL);
                 buf.flip();
                 matric = buf.getLong();
+                buf.flip();
+                if(posA == pos){break;}
             }
             if (matric == matricA) {
                 buf = ByteBuffer.allocate(TamanhoAluno.TOTAL);
@@ -147,15 +146,16 @@ public class OrganizadorBrent implements IFileOrganizer {
 
     @Override
     public Aluno delAluno(long matricA) {
-        long pos = matricA % LENT;
+        long pos = matricA % LENT, posA = pos;
         long inc = (matricA % (LENT - 2)) + 1;
         ByteBuffer buf = ByteBuffer.allocate(TamanhoAluno.MATRICULA);
         try {
             this.canal.read(buf, pos * TamanhoAluno.TOTAL);
             buf.flip();
             long matric = buf.getLong();
-            long size = (this.canal.size() / TamanhoAluno.TOTAL);
-            while (matric != matricA && matric > 0) {
+                buf.flip();
+            long size = this.canal.size() / TamanhoAluno.TOTAL;
+            while (matric != 0 && matric!=matricA) {
                 pos += inc;
                 if (pos >= size) {
                     pos -= size;
@@ -163,6 +163,8 @@ public class OrganizadorBrent implements IFileOrganizer {
                 this.canal.read(buf, pos * TamanhoAluno.TOTAL);
                 buf.flip();
                 matric = buf.getLong();
+                buf.flip();
+                if(posA == pos){break;}
             }
             if (matric == matricA) {
                 buf = ByteBuffer.allocate(TamanhoAluno.TOTAL);
@@ -189,7 +191,7 @@ public class OrganizadorBrent implements IFileOrganizer {
                 this.canal.read(buf, pos);
                 buf.flip();
                 Aluno a = ConversorAluno.toAluno(buf);
-                System.out.println("-------------- " + pos + " --------------");
+                System.out.println("--------------++++++++++++++ " + pos + " ++++++++++++++--------------");
                 a.imprimiAluno();
             }
         } catch (IOException ex) {

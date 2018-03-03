@@ -72,7 +72,6 @@ public class OrganizadorSequencial implements IFileOrganizer {
     }
 
     private Aluno getAluno(long matricA, long inicio, long fim) {
-        System.out.println("-------------------------------------------------");
         long matricA1;
         long meio = (inicio + fim) / 2;
         if (inicio == fim) {
