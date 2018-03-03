@@ -1,5 +1,5 @@
 # FileOrganizationED2
-## Implementação do Método Sequencial
+## Implementação e Comparação de Métodos de Organização de Arquivos
 ### Parte 1: Implementação do Método de Sequencial
   * O objetivo desta parte é usar a API Java NIO para implementar o método sequencial de organização para um arquivo de dados de alunos chamado "alunos.db". Os registros deste arquivo são de tamanho fixo e devem estar sempre na ordem das matrículas dos alunos. As operações a serem implementadas na manipulação deste arquivo são:
 
