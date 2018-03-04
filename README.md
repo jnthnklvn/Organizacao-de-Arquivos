@@ -48,4 +48,5 @@ A partir dessa inteface, deve-se implementar o método de Brent a partir de uma 
 
  * C. Criar um relatório com uma tabela comparativa que mostre o tempo total dispendido por cada método para localizar os 1000 registros indicados. Discutir no relatório o porquê dos resultados que forma obtidos.
 
- * Acesso aos arquivos: https://drive.google.com/file/d/15ILkyaLaIQhETJhyMutsWMpcIiszT2tc/view?usp=sharing
+ * Acesso aos arquivos (professor): https://drive.google.com/file/d/15ILkyaLaIQhETJhyMutsWMpcIiszT2tc/view?usp=sharing
+ * Acesso aos arquivos (resultados): https://drive.google.com/file/d/1fL7vjg4Fhsg0C3AKKDH5aRU5JPkOyvK2/view?usp=sharing
