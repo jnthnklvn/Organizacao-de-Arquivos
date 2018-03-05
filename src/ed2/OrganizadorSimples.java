@@ -86,13 +86,11 @@ public class OrganizadorSimples implements IFileOrganizer {
     public void percorrer() {
         try {
             long size = this.canal.size();
-            ConversorAluno cA = new ConversorAluno();
             for (long pos = 0; pos < size; pos += TamanhoAluno.TOTAL) {
                 ByteBuffer buf = ByteBuffer.allocate(TamanhoAluno.TOTAL);
                 this.canal.read(buf, pos);
                 buf.flip();
                 Aluno a = ConversorAluno.toAluno(buf);
-                System.out.println("------- "+pos+" -------");
                 a.imprimiAluno();
             }
         } catch (IOException ex) {

@@ -68,7 +68,7 @@ public class OrganizadorSequencial implements IFileOrganizer {
         } catch (IOException ex) {
             Logger.getLogger(OrganizadorSequencial.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return getAluno(matricA, 0, l);
+        return getAlunos(matricA, 0, l);
     }
 
     private Aluno getAluno(long matricA, long inicio, long fim) {
@@ -166,7 +166,6 @@ public class OrganizadorSequencial implements IFileOrganizer {
                 this.canal.read(buf, pos);
                 buf.flip();
                 Aluno a = ConversorAluno.toAluno(buf);
-                System.out.println("-------------- " + pos + " --------------");
                 a.imprimiAluno();
             }
         } catch (IOException ex) {

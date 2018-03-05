@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author j_kel
  */
-public class TesteBrent {
+public class TesteSeq {
 
     static long tamA = TamanhoAluno.MATRICULA, matric;
 
@@ -29,7 +29,7 @@ public class TesteBrent {
             FileChannel canalO = fileO.getChannel(); //Canal origem
 
             // referencia o arquivo organizado pelo método implementado
-            OrganizadorBrent org = new OrganizadorBrent("enem_brent.db");
+            OrganizadorSequencial org = new OrganizadorSequencial("enem_seq.db");
             ByteBuffer buf = ByteBuffer.allocate(TamanhoAluno.MATRICULA);
             for (int j = 0; j < 10; j++) {
                 long tempoInicio = System.currentTimeMillis(); //contador

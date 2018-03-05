@@ -26,15 +26,18 @@ public class MigracaoBrent {
                 // referencia o arquivo organizado pelo método implementado
                 IFileOrganizer org = new OrganizadorBrent("enem_brent.db");
                 // Ler cada aluno do arquivo de origem e inserir no de destino
-                for (int i = 0; i < 7603290; i++) {
+                long tempoInicio = System.currentTimeMillis();
+                int tamA = TamanhoAluno.TOTAL;
+                for (long i = 0; i < 7603290; i++) {
                     // Ler da origem
-                    ByteBuffer buf = ByteBuffer.allocate(TamanhoAluno.TOTAL);
-                    canalO.read(buf, i*TamanhoAluno.TOTAL);
+                    ByteBuffer buf = ByteBuffer.allocate(tamA);
+                    canalO.read(buf, i*tamA);
                     buf.flip();
                     Aluno a = ConversorAluno.toAluno(buf);
                     // Inserir no destino
                     org.addAluno(a);
                 }
+                System.out.println("Tempo Total: " + (System.currentTimeMillis() - tempoInicio)/60000);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MigracaoBrent.class.getName()).log(Level.SEVERE, null, ex);
