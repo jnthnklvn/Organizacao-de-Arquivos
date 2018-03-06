@@ -31,17 +31,15 @@ public class TesteBrent {
             // referencia o arquivo organizado pelo método implementado
             OrganizadorBrent org = new OrganizadorBrent("enem_brent.db");
             ByteBuffer buf = ByteBuffer.allocate(TamanhoAluno.MATRICULA);
-            for (int j = 0; j < 10; j++) {
-                long tempoInicio = System.currentTimeMillis(); //contador
-                for (int i = 0; i < 1000; i++) {
-                    canalO.read(buf, i * tamA); // Ler da origem
-                    buf.flip(); //volta ao inicio do buffer
-                    matric = buf.getLong();
-                    buf.flip();
-                    org.getAluno(matric);
-                }
-                System.out.println("Tempo total: " + (System.currentTimeMillis() - tempoInicio));
+            long tempoInicio = System.currentTimeMillis(); //contador
+            for (int i = 0; i < 1000; i++) {
+                canalO.read(buf, i * tamA); // Ler da origem
+                buf.flip(); //volta ao inicio do buffer
+                matric = buf.getLong();
+                buf.flip();
+                org.getAluno(matric);
             }
+            System.out.println("Tempo total: " + (System.currentTimeMillis() - tempoInicio));
         } catch (IOException ex) {
             Logger.getLogger(TesteBrent.class.getName()).log(Level.SEVERE, null, ex);
         }

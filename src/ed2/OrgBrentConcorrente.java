@@ -17,11 +17,12 @@ import java.util.logging.Logger;
  *
  * @author j_kel
  */
-public class TesteSeq {
+public class OrgBrentConcorrente implements Runnable {
 
     static long tamA = TamanhoAluno.MATRICULA, matric;
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         // referencia o arquivo com os 1000 elementos aleatorios
         File fOrigem = new File("selected.db");
         try {
@@ -29,17 +30,16 @@ public class TesteSeq {
             FileChannel canalO = fileO.getChannel(); //Canal origem
 
             // referencia o arquivo organizado pelo método implementado
-            OrganizadorSequencial org = new OrganizadorSequencial("enem_seq.db");
+            OrganizadorBrent org = new OrganizadorBrent("enem_brent.db");
             ByteBuffer buf = ByteBuffer.allocate(TamanhoAluno.MATRICULA);
-            long tempoInicio = System.currentTimeMillis(); //contador
             for (int i = 0; i < 1000; i++) {
                 canalO.read(buf, i * tamA); // Ler da origem
                 buf.flip(); //volta ao inicio do buffer
                 matric = buf.getLong();
                 buf.flip();
                 org.getAluno(matric);
+                System.out.println(i + ", Brent");
             }
-            System.out.println("Tempo total: " + (System.currentTimeMillis() - tempoInicio));
         } catch (IOException ex) {
             Logger.getLogger(TesteBrent.class.getName()).log(Level.SEVERE, null, ex);
         }
