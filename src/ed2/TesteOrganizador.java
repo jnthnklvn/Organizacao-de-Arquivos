@@ -12,7 +12,7 @@ package ed2;
 public class TesteOrganizador {
 
     //static OrganizadorBrent org = new OrganizadorBrent("C:\\Users\\j_kel\\Desktop\\testeBrent.db");
-    static OrganizadorSequencial org = new OrganizadorSequencial("testeSeq.db");
+    static OrganizadorSequencial org = new OrganizadorSequencial("aluno.db");
     
     public static void addAlunos() {
         Aluno a = new Aluno(29, "Bruna", "Salgado", "(79)99862-0665", (short) 171, "brunna.com");
@@ -43,6 +43,5 @@ public class TesteOrganizador {
     public static void main(String[] args) throws Exception {
         org.esvaziar();
         addAlunos();
-        org.percorrer();
     }
 }
